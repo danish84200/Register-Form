@@ -1,0 +1,65 @@
+
+<html>
+<head>
+    <title>Registration Form</title>
+    <script src="validation.js"></script> <!-- Ensure the JavaScript is linked correctly -->
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName"><br>
+
+        <label for="mobileNo">Mobile No:</label>
+        <input type="text" id="mobileNo" name="mobileNo"><br>
+
+        <label for="emailId">Email ID:</label>
+        <input type="text" id="emailId" name="emailId"><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+<script> function validateForm() {
+    var fullName = document.getElementById("fullName").value;
+    var mobileNo = document.getElementById("mobileNo").value;
+    var emailId = document.getElementById("emailId").value;
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    var namePattern = /^[a-zA-Z\s]+$/;
+    var mobilePattern = /^\d{10}$/;
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var usernamePattern = /^[a-zA-Z0-9._]{3,15}$/;
+    var passwordPattern = /(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}/;
+
+    if (!namePattern.test(fullName)) {
+        alert("Please enter a valid full name.");
+        return false;
+    }
+    if (!mobilePattern.test(mobileNo)) {
+        alert("Please enter a valid mobile number.");
+        return false;
+    }
+    if (!emailPattern.test(emailId)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+    if (!usernamePattern.test(username)) {
+        alert("Please enter a valid username.");
+        return false;
+    }
+    if (!passwordPattern.test(password)) {
+        alert("Please enter a strong password.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</html>
+ 
